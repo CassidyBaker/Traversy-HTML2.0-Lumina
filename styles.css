@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --c-accent: #fcf5e9;
+  --c-dkGray: #333;
+  --c-gray: #aaa;
+  --font-stack: 'Open Sans', sans-serif;
+  --line-height: 1.6;
+  --container: 1100px;
+  --container-lg: 1400px;
+  --container-sm: 900px;
+}
+
+/* Resets******************************************** */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-stack);
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  line-height: var(--line-height);
+
+  color: var(--c-dkGray);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* utility classes *********************************************/
+
+.container {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  max-width: var(--container);
+}
+
+.container-lg {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  max-width: var(--container-lg);
+}
+
+.container-sm {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  max-width: var(--container-sm);
+}
+
+.container-flex {
+  text-align: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-accent {
+  background: var(--c-accent);
+  color: var(--c-dkGray);
+}
+
+.bg-dkGray {
+  background: var(--c-dkGray);
+  color: white;
+}
+
+.bg-light {
+  background: white;
+  color: var(--c-dkGray);
+}
+.btn {
+  padding: 2rem;
+  border: 1px solid var(--c-dkGray);
+}
+
+.card {
+  text-align: left;
+  padding: 1rem 0;
+}
+
+/* hide elements from page but still be accessible to screenreaders */
+.hide-accessibly {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Lightbox popups *****************************************************************************/
+
+/* "modal" is really an overlay for the screen */
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#modal_content {
+  position: relative;
+  text-align: left;
+  border-radius: 5px;
+  caret-color: transparent;
+}
+
+#modal_content img {
+  border: 5px solid white;
+  border-radius: 5px;
+  margin-top: 10px;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+#modal_content #leftArrow,
+#modal_content #rightArrow {
+  position: absolute;
+  padding: 5px;
+  top: 40%;
+
+  cursor: pointer;
+  background: rgba(243, 243, 243, 0.2);
+  color: white;
+  border-radius: 50%;
+}
+
+#modal_content #leftArrow {
+  left: 2%;
+}
+#modal_content #rightArrow {
+  right: 2%;
+}
+
+#modal_content #leftArrow:hover,
+#modal_content #rightArrow:hover {
+  background: rgba(243, 243, 243, 0.9);
+}
+
+#modal_content figcaption {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+
+  p {
+    font-size: 1rem;
+    display: inline-block;
+
+    font-weight: 400;
+    color: white;
+  }
+  #closeBtn {
+    color: white;
+    font-size: 3rem;
+    line-height: 1rem;
+    cursor: pointer;
+  }
+}
+
+/* header for all pages************************************ */
+.logo {
+  width: 145px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+
+  a {
+    padding: 0.5rem 1rem;
+    color: var(--c-dkGray);
+  }
+  a:hover {
+    background: var(--c-accent);
+  }
+}
+
+.current {
+  background: var(--c-accent);
+  font-weight: 600;
+}
+
+/* Splash for all pages ************************************ */
+
+.splash {
+  min-height: 100vh;
+  display: flex;
+  padding: 0 3rem;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    font-size: 3.3rem;
+    font-weight: 400;
+  }
+}
+
+/*   Footer for all pages******************************* */
+
+.footer {
+  margin-top: 2rem;
+  padding: 2.5rem;
+  border-top: 1px solid var(--c-gray);
+
+  /* to override utility-class settings with nested format, MUST USE the & without a space and utility class name */
+  &.container-flex {
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    padding: 2rem 3rem;
+  }
+  h4 {
+    font-size: 1.1rem;
+    padding-bottom: 0.7rem;
+  }
+  & .contact {
+    p {
+      font-size: 1.1rem;
+    }
+  }
+
+  & .social {
+    h4 {
+      font-size: 1.1rem;
+    }
+    i {
+      color: var(--c-dkGray);
+      font-size: 2.2rem;
+      padding: 0 0.2rem;
+    }
+  }
+}
+
+/* Home/Index page **************************************/
+.img-gallery {
+  display: flex;
+  padding: 0 0.5rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img {
+    display: inline-block;
+    border-radius: 20px;
+  }
+  div {
+    flex: 0 0 calc(33.3333% - 2rem);
+  }
+}
+
+/*   About Page ****************************************** */
+
+.services {
+  padding: 3rem 0.5rem;
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+.team {
+  h2 {
+    font-size: 1.8rem;
+    padding: 1.7rem 0;
+  }
+  h4,
+  p {
+    font-size: 1.1rem;
+  }
+}
+div.container-flex {
+  gap: 1.5rem;
+  padding: 2rem 0.8rem;
+  justify-content: space-around;
+
+  & .container-flex {
+    flex-direction: column;
+    padding: 0;
+    gap: 0.2rem;
+    align-items: start;
+
+    img {
+      border-radius: 10px;
+    }
+  }
+}
+
+/* contact page  ***************************************** */
+
+.splash.bg-dkGray {
+  span {
+    padding: 0 0.4rem;
+  }
+}
+
+.contact {
+  padding: 3rem 6rem 2rem;
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  input,
+  textarea {
+    outline: none;
+    border: none;
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--c-dkGray);
+  }
+  button {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 4rem;
+    &:hover {
+      cursor: pointer;
+      background: var(--c-dkGray);
+      color: white;
+    }
+  }
+}
+
+/* small screens *************************************** */
+@media (max-width: 768px) {
+  /* all pages *********/
+  .header {
+    flex-direction: column;
+    padding: 2rem 0.3rem 0;
+    gap: 1.7rem;
+  }
+
+  .splash {
+    min-height: 65vh;
+    margin-top: 2rem;
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .footer {
+    &.container-flex {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .contact p {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+  }
+
+  /* home/index ********/
+
+  .img-gallery {
+    div {
+      flex: 0 0 calc(50% - 2rem);
+    }
+  }
+
+  /* about **************/
+
+  .container-flex {
+    flex-direction: column;
+    padding: 0.8rem;
+    justify-content: center;
+  }
+
+  /* contact */
+
+  .contact p {
+    margin: 2rem 0;
+  }
+}
